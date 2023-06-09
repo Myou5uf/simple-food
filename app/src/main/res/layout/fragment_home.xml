@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".HomeFragment">
+    tools:context=".activites.MainActivity">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -53,7 +53,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/myfont"
                 android:text="What would you like to eat"
-                android:textColor="@color/black"
+                android:textColor="@color/primary"
                 android:textSize="@dimen/_15ssp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/linear_header"

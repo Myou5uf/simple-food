@@ -1,9 +1,10 @@
-package com.bignerdranch.android.simplefood
+package com.bignerdranch.android.simplefood.activites
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import com.bignerdranch.android.simplefood.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {

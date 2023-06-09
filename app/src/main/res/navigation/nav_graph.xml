@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.bignerdranch.android.simplefood.HomeFragment"
+        android:name="com.bignerdranch.android.simplefood.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="com.bignerdranch.android.simplefood.FavoritesFragment"
+        android:name="com.bignerdranch.android.simplefood.fragments.FavoritesFragment"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" />
     <fragment
         android:id="@+id/categoriesFragment"
-        android:name="com.bignerdranch.android.simplefood.CategoriesFragment"
+        android:name="com.bignerdranch.android.simplefood.fragments.CategoriesFragment"
         android:label="fragment_categories"
         tools:layout="@layout/fragment_categories" />
 </navigation>
