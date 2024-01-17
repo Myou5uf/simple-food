@@ -1,5 +1,6 @@
 package com.bignerdranch.android.simplefood.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bignerdranch.android.simplefood.R
+import com.bignerdranch.android.simplefood.activites.MealActivity
 import com.bignerdranch.android.simplefood.adapters.MostPopularAdapter
 import com.bignerdranch.android.simplefood.databinding.FragmentHomeBinding
 import com.bignerdranch.android.simplefood.pojo.CategoryMeals
@@ -26,6 +28,13 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var homeMvvm: HomeViewModel
     private lateinit var popularItemsAdapter: MostPopularAdapter
+    private lateinit var randomMeal: Meal
+
+    companion object{
+        const val MEAL_ID = "com.bignerdranch.android.simplefood.fragments.idMeal"
+        const val MEAL_NAME = "com.bignerdranch.android.simplefood.fragments.nameMeal"
+        const val MEAL_THUMB = "com.bignerdranch.android.simplefood.fragments.thumbMeal"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,9 +58,20 @@ class HomeFragment : Fragment() {
 
         homeMvvm.getRandomMeal()
         observerRandomMeal()
+        onRandomMealClick()
 
         homeMvvm.getPopularItems()
         observerPopularItemsLiveData()
+    }
+
+    private fun onRandomMealClick() {
+        binding.randomMealCard.setOnClickListener {
+            val intent = Intent(activity, MealActivity::class.java)
+            intent.putExtra(MEAL_ID, randomMeal.idMeal)
+            intent.putExtra(MEAL_NAME, randomMeal.strMeal)
+            intent.putExtra(MEAL_THUMB, randomMeal.strMealThumb)
+            startActivity(intent);
+        }
     }
 
     private fun preparedPopularItemsRecyclerView() {
@@ -72,13 +92,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun observerRandomMeal() {
-        homeMvvm.observeRandomMealLiveData().observe(viewLifecycleOwner, object : Observer<Meal> {
-            override fun onChanged(t: Meal?) {
-                Glide.with(this@HomeFragment)
-                    .load(t!!.strMealThumb)
-                    .into(binding.imgRandomMeal);
-            }
-        })
+        homeMvvm.observeRandomMealLiveData().observe(viewLifecycleOwner) { meal ->
+            Glide.with(this@HomeFragment)
+                .load(meal!!.strMealThumb)
+                .into(binding.imgRandomMeal);
+            this.randomMeal = meal
+        }
     }
 
 
