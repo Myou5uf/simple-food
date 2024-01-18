@@ -37,6 +37,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_add_to_fav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_favorites"
@@ -60,14 +61,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:layout_marginEnd="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_6sdp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
                 <TextView
+                    android:id="@+id/tv_category"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Category: Beef"
@@ -78,6 +80,7 @@
                     android:layout_weight="1"
                     />
                 <TextView
+                    android:id="@+id/tv_area"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Area: Russia"
@@ -98,16 +101,21 @@
                 android:textSize="@dimen/_15ssp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/linear_layout"
-                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_6sdp"
                 android:layout_marginTop="@dimen/_16sdp"
                 />
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_instructions_steps"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="@id/tv_instructions"
                 app:layout_constraintTop_toBottomOf="@id/tv_instructions"
                 android:textColor="@color/black"
-                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_6sdp"
+                android:paddingBottom="@dimen/_12sdp"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
