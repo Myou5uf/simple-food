@@ -62,6 +62,17 @@ class HomeFragment : Fragment() {
 
         homeMvvm.getPopularItems()
         observerPopularItemsLiveData()
+        onPopularItemClick()
+    }
+
+    private fun onPopularItemClick() {
+        popularItemsAdapter.onItemClick = { meal ->
+            val intent = Intent(activity, MealActivity::class.java)
+            intent.putExtra(MEAL_ID, meal.idMeal)
+            intent.putExtra(MEAL_NAME, meal.strMeal)
+            intent.putExtra(MEAL_THUMB, meal.strMealThumb)
+            startActivity(intent)
+        }
     }
 
     private fun onRandomMealClick() {
@@ -87,7 +98,6 @@ class HomeFragment : Fragment() {
                 override fun onChanged(t: List<CategoryMeals>?) {
                     popularItemsAdapter.setMeals(mealsList = t as ArrayList<CategoryMeals>)
                 }
-
             })
     }
 
@@ -99,6 +109,4 @@ class HomeFragment : Fragment() {
             this.randomMeal = meal
         }
     }
-
-
 }
