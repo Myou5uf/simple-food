@@ -1,6 +1,5 @@
 package com.bignerdranch.android.simplefood.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,6 +8,7 @@ import com.bignerdranch.android.simplefood.pojo.MealsByCategory
 import com.bumptech.glide.Glide
 
 class CategoryMealsAdapter: RecyclerView.Adapter<CategoryMealsAdapter.CategoryMealsViewModel>() {
+    lateinit var onItemClick: ((MealsByCategory) -> Unit)
     private var mealsList = ArrayList<MealsByCategory>()
 
     inner class CategoryMealsViewModel(val binding: MealItemBinding):RecyclerView.ViewHolder(binding.root)
@@ -32,6 +32,10 @@ class CategoryMealsAdapter: RecyclerView.Adapter<CategoryMealsAdapter.CategoryMe
             .load(currentMeal.strMealThumb)
             .into(holder.binding.imgMeal)
         holder.binding.tvMealName.text = currentMeal.strMeal
+
+        holder.itemView.setOnClickListener {
+            onItemClick.invoke(currentMeal)
+        }
     }
 
     override fun getItemCount(): Int {
